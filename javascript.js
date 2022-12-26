@@ -20,8 +20,12 @@ var items = [
     title: "Sea",
   },
 ];
-var index = 4;
-
+var index = 0;
+var slaytCount = items.length;
+var settings = {
+  duration: "2000",
+  random: false,
+};
 showSlide(index);
 
 document.querySelector("#left").addEventListener("click", function () {
@@ -34,8 +38,16 @@ document.querySelector("#right").addEventListener("click", function () {
   showSlide(index);
   console.log(index);
 });
-
+console.log(slaytCount);
 function showSlide(i) {
-  document.querySelector(".image").setAttribute("src", items[i].img);
-  document.querySelector(".card-title").textContent = items[i].title;
+  index = i;
+  if (i < 0) {
+    index = slaytCount - 1;
+  }
+  if (i >= slaytCount) {
+    index = 0;
+  }
+
+  document.querySelector(".image").setAttribute("src", items[index].img);
+  document.querySelector(".card-title").textContent = items[index].title;
 }
