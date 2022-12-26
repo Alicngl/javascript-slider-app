@@ -60,7 +60,7 @@ function showSlide(i) {
   document.querySelector(".image").setAttribute("src", items[index].img);
   document.querySelector(".card-title").textContent = items[index].title;
 }
-
+console.log(index);
 function init(set) {
   var prev;
   interval = setInterval(function () {
