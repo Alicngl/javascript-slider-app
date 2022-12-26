@@ -19,6 +19,10 @@ var items = [
     img: "/images/image-5.jpg",
     title: "Sea",
   },
+  {
+    img: "/images/image-6.jpg",
+    title: "Cloud-Mountain",
+  },
 ];
 var index = 0;
 var slaytCount = items.length;
