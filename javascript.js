@@ -24,9 +24,10 @@ var index = 0;
 var slaytCount = items.length;
 var settings = {
   duration: "2000",
-  random: false,
+  random: true,
 };
-showSlide(index);
+var interval;
+init(settings);
 
 document.querySelector("#left").addEventListener("click", function () {
   index--;
@@ -37,6 +38,16 @@ document.querySelector("#right").addEventListener("click", function () {
   index++;
   showSlide(index);
   console.log(index);
+});
+document.querySelectorAll(".arrow").forEach(function (item) {
+  item.addEventListener("mouseenter", function () {
+    clearInterval(interval);
+  });
+});
+document.querySelectorAll(".arrow").forEach(function (item) {
+  item.addEventListener("mouseleave", function () {
+    init(settings);
+  });
 });
 console.log(slaytCount);
 function showSlide(i) {
@@ -50,4 +61,25 @@ function showSlide(i) {
 
   document.querySelector(".image").setAttribute("src", items[index].img);
   document.querySelector(".card-title").textContent = items[index].title;
+}
+
+function init(set) {
+  var prev;
+  interval = setInterval(function () {
+    if (set.random) {
+      //random index
+      do {
+        index = Math.floor(Math.random() * slaytCount);
+      } while (index == prev);
+      prev = index;
+    } else {
+      //artan index
+      if (slaytCount == index + 1) {
+        index = -1;
+      }
+      showSlide(index);
+      index++;
+    }
+    showSlide(index);
+  }, settings.duration);
 }
