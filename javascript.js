@@ -32,12 +32,10 @@ init(settings);
 document.querySelector("#left").addEventListener("click", function () {
   index--;
   showSlide(index);
-  console.log(index);
 });
 document.querySelector("#right").addEventListener("click", function () {
   index++;
   showSlide(index);
-  console.log(index);
 });
 document.querySelectorAll(".arrow").forEach(function (item) {
   item.addEventListener("mouseenter", function () {
@@ -49,7 +47,7 @@ document.querySelectorAll(".arrow").forEach(function (item) {
     init(settings);
   });
 });
-console.log(slaytCount);
+
 function showSlide(i) {
   index = i;
   if (i < 0) {
